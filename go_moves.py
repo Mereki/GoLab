@@ -62,13 +62,13 @@ while respX != "stop" or respY != "stop":
     x = sep[0]
     y = sep[1]
 
-    if not x.isnumeric():
+    if not x.isnumeric():  # Checks if x value is numeric
         print("X value is not numeric, try again")
         continue
-    elif not y.isnumeric():
+    elif not y.isnumeric():  # Checks if y value is numeric
         print("Y value is not numeric, try again")
         continue
-    elif x == "9" or y == "9":
+    elif x == "9" or y == "9":  # Lists start at position 0, considered out of bounds despite 9x9 board
         print("Out of bounds, try again")
         continue
     else:
