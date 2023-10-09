@@ -43,15 +43,14 @@ def player(c):  # Updates turn
 
 
 count = 0
-respX = ""
-respY = ""
+resp = ""
 
-while respX != "stop" or respY != "stop":
+while resp != "stop":
     pboard(board)  # Draw board before every iteration
     person = player(count)  # Update player turn
 
     resp = input(f"({person}) Please enter a coordinate in range 0-8, and in the format: x y, or enter \"stop\" to "
-                 f"end the game: ")
+                 f"end the game: ") # format input as "x y" without quotations, user input
     if resp == "stop":
         break
     elif len(resp) <= 1 or len(resp) == 2 or len(resp) > 3:  # input must meet correct format: x (space) y
@@ -62,13 +61,13 @@ while respX != "stop" or respY != "stop":
     x = sep[0]
     y = sep[1]
 
-    if not x.isnumeric():  # Checks if x value is numeric
+    if not x.isnumeric():  # Checks if x is numeric
         print("X value is not numeric, try again")
         continue
-    elif not y.isnumeric():  # Checks if y value is numeric
+    elif not y.isnumeric():  # Checks if y is numeric
         print("Y value is not numeric, try again")
         continue
-    elif x == "9" or y == "9":  # Lists start at position 0, considered out of bounds despite 9x9 board
+    elif x == "9" or y == "9":  # Out of bounds if value is 9 (0-8)
         print("Out of bounds, try again")
         continue
     else:
@@ -82,5 +81,6 @@ while respX != "stop" or respY != "stop":
         update(board, x, y, person)
         count += 1
 
+# If user input == "stop", prints out board once more and gives out a conclusion message
 pboard(board)
 print("Game has concluded.")
